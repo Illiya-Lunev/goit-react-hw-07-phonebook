@@ -1,7 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import {
-  persistStore,
-  persistReducer,
+  // persistStore,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -10,7 +9,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 // Ссылка на локал Сторедж
-import storage from 'redux-persist/lib/storage';
+
 import logger from 'redux-logger';
 import contactsReducer from './reducer';
 
@@ -22,21 +21,15 @@ const middleware = [
   }),
   logger,
 ];
-// Конфигурация локал  сторедж
-const contactsPersistConfig = {
-  key: 'contacts',
-  storage,
-  blacklist: ['filter'],
-};
 
 const store = configureStore({
   reducer: {
-    contacts: persistReducer(contactsPersistConfig, contactsReducer),
+    contacts: contactsReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
 });
 
-const persistor = persistStore(store);
+// const persistor = persistStore(store);
 
-export { store, persistor };
+export default store;
