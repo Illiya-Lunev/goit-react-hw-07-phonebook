@@ -2,18 +2,20 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import s from './formPhone.module.css';
-import { addContact } from '../../redux/actions';
+import { addContacts } from '../../redux/operations';
+import { getContactsList } from '../../redux/selectors';
+import { v4 as uuidv4 } from 'uuid';
 
 // Пропсы передаем в функцию как параметры
 export default function FormPhoneBook() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-
   const dispatch = useDispatch();
 
-  const items = useSelector(state => state.contacts.items);
+  const items = useSelector(getContactsList);
+  const id = uuidv4();
 
-  const onSubmit = () => dispatch(addContact({ name, number }));
+  const onSubmit = () => dispatch(addContacts({ name, number, id }));
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
