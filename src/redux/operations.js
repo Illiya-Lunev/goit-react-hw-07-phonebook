@@ -16,7 +16,7 @@ import {
   deleteContactsApi,
 } from '../apiService';
 
-export const getContacts = () => async dispatch => {
+export const fetchContacts = () => async dispatch => {
   dispatch(getContactsRequests());
   try {
     const contactsGet = await getContactsApi();
