@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import s from './formPhone.module.css';
 import { addContacts } from '../../redux/operations';
-import { getContactsList } from '../../redux/selectors';
+import { getContactsList } from '../../redux/contacts-selectors';
 import { v4 as uuidv4 } from 'uuid';
 
 export default function FormPhoneBook() {
