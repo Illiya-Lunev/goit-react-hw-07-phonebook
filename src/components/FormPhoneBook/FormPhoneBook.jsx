@@ -6,7 +6,6 @@ import { addContacts } from '../../redux/operations';
 import { getContactsList } from '../../redux/selectors';
 import { v4 as uuidv4 } from 'uuid';
 
-// Пропсы передаем в функцию как параметры
 export default function FormPhoneBook() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
